@@ -16,14 +16,36 @@ try {
   await page
     .getByRole("heading", { name: "Your next upload starts here." })
     .waitFor();
-  await page.getByRole("button", { name: "Connect YouTube" }).click();
+  const connection = await page.evaluate(async () => {
+    const session = await fetch("/api/session").then((r) => r.json());
+    return fetch("/api/status", {
+      headers: { "X-Clipdock-Session": session.csrf },
+    }).then((r) => r.json());
+  });
+  await page.locator(".channel-button").click();
   await page.getByRole("heading", { name: "Connect your channel." }).waitFor();
   assert.equal(
     await page
-      .getByRole("button", { name: "Sign in with Google", exact: true })
+      .getByRole("button", {
+        name: /^(Sign in with Google|Connect a different channel)$/,
+      })
       .isDisabled(),
-    true,
+    !connection.configured,
   );
+  await page
+    .getByText("4. Add the exact callback URL", { exact: true })
+    .click();
+  await page.getByRole("button", { name: "Copy URL", exact: true }).waitFor();
+  assert.equal(
+    await page.getByRole("link", { name: "Full setup tutorial" }).count(),
+    1,
+  );
+  await page
+    .getByText("3. Create a client: Web application", { exact: true })
+    .click();
+  await page
+    .getByText("Use this client for an AI-powered agent", { exact: true })
+    .waitFor();
   await page.getByRole("button", { name: "Close dialog", exact: true }).click();
   await page
     .getByRole("button", { name: "Import folder", exact: true })

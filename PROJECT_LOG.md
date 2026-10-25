@@ -15,3 +15,7 @@
 ### Public repository and hosted checks
 
 Published at https://github.com/mmhfarooque/clipdock . GitHub Actions run 40196607185 passed all three jobs: ubuntu-latest, windows-latest and macos-latest. Each ran npm ci, the React production build and seven core/HTTP tests. Live Google OAuth and uploads were not exercised.
+
+## Guided onboarding — 2026-10-25
+
+Added an in-app six-step Google setup guide, runtime callback copying, OAuth-vs-API-key explanation, audience/client field guidance, AI-agent checkbox explanation, sign-in state hints and troubleshooting. Added a shareable docs/SETUP.md tutorial with personal-use versus public OAuth verification distinctions. Local production build, seven tests and updated Chromium guide smoke passed. A user completed Google OAuth locally; no real upload was performed. No account names or credentials are included in this public log.

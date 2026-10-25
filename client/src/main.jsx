@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { createRoot } from "react-dom/client";
 import "./style.css";
+import SetupGuide from "./SetupGuide.jsx";
 
 let csrf;
 async function api(url, body) {
@@ -12,11 +13,9 @@ async function api(url, body) {
     },
     ...(body === undefined ? {} : { body: JSON.stringify(body) }),
   });
-  const data = await response
-    .json()
-    .catch(() => ({
-      error: "The local server could not complete this request.",
-    }));
+  const data = await response.json().catch(() => ({
+    error: "The local server could not complete this request.",
+  }));
   if (!response.ok) throw new Error(data.error || "Request failed.");
   return data;
 }
@@ -609,11 +608,29 @@ function App() {
               API.
             </span>
             <span>
-              <a href="https://www.youtube.com/t/terms" target="_blank" rel="noreferrer">YouTube terms</a>
+              <a
+                href="https://www.youtube.com/t/terms"
+                target="_blank"
+                rel="noreferrer"
+              >
+                YouTube terms
+              </a>
               {" · "}
-              <a href="https://policies.google.com/privacy" target="_blank" rel="noreferrer">Google privacy</a>
+              <a
+                href="https://policies.google.com/privacy"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Google privacy
+              </a>
               {" · "}
-              <a href="https://github.com/mmhfarooque/clipdock/blob/main/PRIVACY.md" target="_blank" rel="noreferrer">ClipDock privacy</a>
+              <a
+                href="https://github.com/mmhfarooque/clipdock/blob/main/PRIVACY.md"
+                target="_blank"
+                rel="noreferrer"
+              >
+                ClipDock privacy
+              </a>
             </span>
           </footer>
         </div>
@@ -694,22 +711,11 @@ function App() {
                   Sign in through Google in your browser. ClipDock never asks
                   for your Google password.
                 </p>
-                <ol className="setup-steps">
-                  <li>
-                    In Google Cloud, enable <b>YouTube Data API v3</b> and
-                    configure your OAuth consent screen. Add yourself as a test
-                    user if the app is in testing.
-                  </li>
-                  <li>
-                    Create a <b>Web application</b> OAuth client. Add this exact
-                    authorised redirect URI:
-                    <code>
-                      {data.redirectUri ||
-                        "http://127.0.0.1:3210/oauth/callback"}
-                    </code>
-                  </li>
-                  <li>Download its client JSON and import it here.</li>
-                </ol>
+                <SetupGuide
+                  configured={data.configured}
+                  connected={data.connected}
+                  redirectUri={data.redirectUri}
+                />
                 <label className="file-upload">
                   Google OAuth client JSON
                   <input
@@ -759,6 +765,18 @@ function App() {
                     : "Sign in with Google"}
                   <Icon name="arrow" size={17} />
                 </button>
+                {!data.configured && (
+                  <p className="disabled-reason" role="status">
+                    Sign-in is locked until you import your Google OAuth client
+                    JSON above.
+                  </p>
+                )}
+                {data.configured && !data.connected && (
+                  <p className="disabled-reason" role="status">
+                    Client imported. Next: click Sign in with Google and choose
+                    your YouTube channel.
+                  </p>
+                )}
                 {data.connected && (
                   <button
                     className="quiet full"

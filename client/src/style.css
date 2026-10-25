@@ -1135,3 +1135,95 @@ code {
     font-size: 11px;
   }
 }
+
+/* Guided Google setup */
+.setup-explainer {
+  padding: 15px;
+  background: #f2f6ee;
+  border: 1px solid #e2ebdc;
+  border-radius: 8px;
+  font-size: 12px;
+}
+.setup-explainer p {
+  font-size: 11px;
+  margin: 7px 0 0;
+}
+.setup-progress {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin: 16px 0;
+}
+.setup-progress span {
+  padding: 7px 10px;
+  border-radius: 20px;
+  background: #f3f5f2;
+  color: #7c8f81;
+  font-size: 10px;
+}
+.setup-progress .done {
+  background: #e5f2df;
+  color: #3f7545;
+}
+.setup-guide details {
+  border-top: 1px solid #e7ede3;
+}
+.setup-guide summary {
+  padding: 15px 0;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.6;
+}
+.guide-body {
+  padding: 0 3px 12px;
+}
+.guide-body p {
+  font-size: 11px;
+  margin-bottom: 12px;
+}
+.setup-fields {
+  font-size: 11px;
+  line-height: 1.65;
+}
+.setup-fields dt {
+  font-weight: 650;
+  margin-top: 13px;
+  color: #3f6551;
+}
+.setup-fields dd {
+  margin: 4px 0 10px;
+  color: #839488;
+}
+.callback-box {
+  border: 1px solid #d7e4d1;
+  border-radius: 7px;
+  background: #f5f8f2;
+  margin-bottom: 14px;
+}
+.callback-box code {
+  background: none;
+  margin: 0;
+  font-size: 10px;
+}
+.callback-box button {
+  padding: 6px 10px 9px;
+  font-size: 10px;
+}
+.guide-links {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  font-size: 10px;
+  border-top: 1px solid #e3ecde;
+  padding: 16px 0 0;
+}
+.disabled-reason {
+  font-size: 11px;
+  color: #718870;
+  background: #f4f7f1;
+  border-radius: 6px;
+  padding: 12px;
+  margin: 10px 0;
+  line-height: 1.7;
+}

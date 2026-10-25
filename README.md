@@ -58,6 +58,8 @@ Add `captions.srt` to enable a separate subtitle track. It is **off by default**
 
 ## Connect Google / YouTube once
 
+**New to OAuth?** Follow the [full setup tutorial](docs/SETUP.md), or open **Connection & settings** in the app for numbered steps, exact field values, a copyable callback URL and troubleshooting.
+
 1. Open [Google Cloud Console](https://console.cloud.google.com/), choose or create your project, and enable **YouTube Data API v3**.
 2. Configure Google Auth Platform/OAuth consent. If your OAuth app is in Testing, add the Google account you will use as a test user.
 3. Create an OAuth client of type **Web application**.
