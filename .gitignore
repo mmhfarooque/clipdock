@@ -1,0 +1,14 @@
+node_modules/
+dist/
+.env*
+!.env.example
+credentials*.json
+client_secret*.json
+token*.json
+*.mp4
+*.wav
+*.mp3
+*.log
+playwright-report/
+test-results/
+local-state/
