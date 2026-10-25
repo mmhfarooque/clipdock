@@ -22,7 +22,7 @@ Open **http://127.0.0.1:3210**. Stop with Ctrl+C. Use this exact address, not `l
 
 To update, stop the app, run `git pull --ff-only`, `npm ci`, `npm run build`, then `npm start`.
 
-Node 22 is also supported by the source; use a current patch version compatible with Vite 8. Local development was tested on Linux. GitHub Actions is configured to test on Linux, Windows and macOS; those hosted results must be checked separately.
+Node 22 is also supported by the source; use a current patch version compatible with Vite 8. Automated production builds and core/HTTP tests passed on Ubuntu, Windows and macOS in [GitHub Actions](https://github.com/mmhfarooque/clipdock/actions/runs/40196607185). Browser smoke tests were run with Chromium on Linux. Live Google authentication and uploading remain unverified.
 
 ## Import videos
 
